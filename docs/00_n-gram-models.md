@@ -293,7 +293,7 @@ Stupid Backoff gives up the idea to make the language model a true probability d
 
 So, if a higher order n-gram has zero counts, we simply backoff to a lowe order n-gram weighted by a fixed (context independent) weight.
 
-$S(w_i | w_{i-N+1:i-1}) = \{ \frac{count(w_{i-N+1:i})}{count(w_{i-N+1:i-1})}$ if $count(w_{i-N+1:i}) > 0$ else $\lambda S(w_i | w_{i-N+2:i-1})$
+$S(w_i | w_{i-N+1:i-1}) = \frac{count(w_{i-N+1:i})}{count(w_{i-N+1:i-1})}$ if $count(w_{i-N+1:i}) > 0$ else $\lambda S(w_i | w_{i-N+2:i-1})$
 
 This backoff terminates in the unigram which has score $S(w) = \frac{count(w)}{N}$
 
