@@ -1,0 +1,34 @@
+# N-gram Model Configuration
+
+# Data paths
+data:
+  train_path: "/kaggle/input/wikitext2/train.txt"
+  test_path: "/kaggle/input/wikitext2/test.txt"
+
+# Encoder settings
+encoder:
+  type: "char"  # Options: char, word, bpe
+  bpe_merges: 1000  # Only used if type is 'bpe'
+
+# Model settings
+model:
+  n_values: [1, 2, 3, 4, 5]  # N-gram orders to experiment with
+
+# Smoothing methods
+smoothing:
+  methods:
+    - name: "mle"
+    - name: "laplace"
+    - name: "add_k"
+      k_values: [0.01, 0.1, 1.0]
+    - name: "interpolation"
+      lambdas: [0.1, 0.2, 0.3, 0.4]  # Must sum to 1.0
+    - name: "backoff"
+      alpha: 0.4
+      k: 0.01
+
+# Output settings
+output:
+  save_results: true
+  results_dir: "./results"
+  plot_figures: true
